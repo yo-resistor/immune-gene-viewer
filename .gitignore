@@ -1,2 +1,69 @@
+#keypair information
 keypair/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
 venv/
+.env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code or other IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Environment/configuration files
+.env
+*.env
+
+# Python dependency files (if generated dynamically)
+poetry.lock
+Pipfile.lock
+
+# Compiled binaries or shared objects
+*.dll
+*.dylib
+*.pyd
+*.pyo
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Git metadata
+*.orig
+
+# Large data or model files (customize as needed)
+*.h5
+*.pkl
+*.pt
+*.onnx
+*.ckpt
+
+# Streamlit cache
+.streamlit/
+
+# AWS credentials (be extremely careful!)
+.aws/
+
+# Local test outputs
+coverage/
+htmlcov/
+pytest_cache/
