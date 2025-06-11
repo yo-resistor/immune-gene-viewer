@@ -16,3 +16,19 @@ stages:
       hash: md5
       md5: 5ad5c1efe3217850b3b12a8a2cb7ca16
       size: 77
+  annotate_v2:
+    cmd: python annotate.py data/test_alleles_v2.csv data/annotated_v2.csv
+    deps:
+    - path: annotate.py
+      hash: md5
+      md5: 2f54829ac4860c1db2a25b55f6e13646
+      size: 669
+    - path: data/test_alleles_v2.csv
+      hash: md5
+      md5: 792dd259042f46327184be2034b8b13d
+      size: 53
+    outs:
+    - path: data/annotated_v2.csv
+      hash: md5
+      md5: 2dffe1270e0ebeb67c83489ca56b4738
+      size: 77

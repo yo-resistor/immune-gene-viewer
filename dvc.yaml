@@ -6,3 +6,10 @@ stages:
     - data/test_alleles.csv
     outs:
     - data/annotated.csv
+  annotate_v2:
+    cmd: python annotate.py data/test_alleles_v2.csv data/annotated_v2.csv
+    deps:
+    - annotate.py
+    - data/test_alleles_v2.csv
+    outs:
+    - data/annotated_v2.csv
