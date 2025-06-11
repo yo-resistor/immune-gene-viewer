@@ -5,7 +5,9 @@ def annotate_variants(input_path, output_path):
     
     # Apply dummy logic based on allele values
     def risk_logic(allele):
-        if "B" in allele:
+        if "B*08" in allele:
+            return "Very High"
+        elif "B" in allele:
             return "High"
         elif "A" in allele:
             return "Moderate"
