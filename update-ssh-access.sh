@@ -7,7 +7,7 @@ SECURITY_GROUP_ID="sg-0064a66ec816cab08"
 REGION="us-west-2"
 PORT=22
 USER="ubuntu"
-INSTANCE_IP="34.220.13.138"
+INSTANCE_IP="52.42.31.181"
 
 # Step 1: Get current public IP
 MY_IP=$(curl -s https://checkip.amazonaws.com)
