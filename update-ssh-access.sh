@@ -56,13 +56,18 @@ for OLD_CIDR in $OLD_CIDRS; do
     fi
 done
 
-# Step 4: Authorize the new IP
+# Step 4: Authorize the new IP only if it's not already allowed
 echo "🔐 Authorizing $CIDR"
-aws ec2 authorize-security-group-ingress \
+AUTHORIZE_OUTPUT=$(aws ec2 authorize-security-group-ingress \
     --group-id "$SECURITY_GROUP_ID" \
     --protocol tcp \
     --port $PORT \
     --cidr "$CIDR" \
-    --region "$REGION"
+    --region "$REGION" 2>&1)
 
-echo "✅ SSH access updated for $CIDR"
+if echo "$AUTHORIZE_OUTPUT" | grep -q "InvalidPermission.Duplicate"; then
+    echo "⚠️  IP rule already exists (caught safely). No action needed."
+else
+    echo "$AUTHORIZE_OUTPUT"
+    echo "✅ SSH access granted for $CIDR"
+fi
