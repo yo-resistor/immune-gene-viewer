@@ -63,6 +63,11 @@ dist/
 # AWS credentials (be extremely careful!)
 .aws/
 
+# DVC-related
+/data/test_alleles.csv
+.dvc/tmp/
+.dvc/cache/
+
 # Local test outputs
 coverage/
 htmlcov/
