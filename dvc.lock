@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  annotate:
+    cmd: python annotate.py
+    deps:
+    - path: annotate.py
+      hash: md5
+      md5: c4cca89eace8c2ea540f499379b7814e
+      size: 383
+    - path: data/test_alleles.csv
+      hash: md5
+      md5: 27eec5653988a3bd34658240dc449dbd
+      size: 53
+    outs:
+    - path: data/annotated.csv
+      hash: md5
+      md5: fec42fb117c58d297b31ffda48558464
+      size: 72

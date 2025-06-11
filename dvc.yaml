@@ -1,0 +1,8 @@
+stages:
+  annotate:
+    cmd: python annotate.py
+    deps:
+    - annotate.py
+    - data/test_alleles.csv
+    outs:
+    - data/annotated.csv
