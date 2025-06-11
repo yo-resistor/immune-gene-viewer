@@ -1,4 +1,4 @@
-#!/Users/yunpro/Dropbox/Mac/Desktop/immune-gene-viewer/venv/bin/python3.11
+#!/home/ubuntu/immune-gene-viewer/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
