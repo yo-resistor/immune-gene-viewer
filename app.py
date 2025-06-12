@@ -7,7 +7,7 @@ from pathlib import Path
 from annotate import annotate_variants
 import subprocess
 
-# Optional: DynamoDB setup (toggle off if not using)
+# Optional: DynamoDB setup (toggle FALSE if not using)
 USE_DYNAMODB = True
 DYNAMODB_REGION = "us-west-2"
 DYNAMODB_TABLE = "ImmuneGeneUploads"
@@ -37,6 +37,14 @@ if uploaded_file and patient_id:
     # Save uploaded file
     with open(input_path, "wb") as f:
         f.write(uploaded_file.read())
+        
+    # Upload to S3
+    s3 = boto3.client("s3")
+    S3_BUCKET = "immune-viewer-dvc-bucket"
+    s3_key = f"input/{input_filename}"
+    s3.upload_file(str(input_path), S3_BUCKET, s3_key)
+    s3_uri = f"s3://{S3_BUCKET}/{s3_key}"
+    st.info(f"📤 Uploaded to S3: {s3_uri}")
 
     # Run annotation
     output_path = annotate_variants(str(input_path), "data/outputs", patient_id)
@@ -59,16 +67,15 @@ if uploaded_file and patient_id:
     with open(output_path, "rb") as f:
         st.download_button("Download Annotated CSV", f, file_name=Path(output_path).name)
 
-    # Optionally log to DynamoDB
+    # Optionally log metadata to DynamoDB
     if USE_DYNAMODB:
-        for _, row in df.iterrows():
-            item = {
-                "submission_id": str(uuid.uuid4()),
-                "timestamp": datetime.utcnow().isoformat(),
-                "PatientID": patient_id,
-                "Gene": row["Gene"],
-                "Allele": row["Allele"],
-                "Risk": row["Risk"]
-            }
-            table.put_item(Item=item)
-        st.info("🗃️ Data logged to DynamoDB.")
+        table.put_item(Item={
+            "submission_id": str(uuid.uuid4()),
+            "timestamp": datetime.utcnow().isoformat(),
+            "patient_id": patient_id,
+            "input_s3_uri": s3_uri,
+            "output_file_path": str(output_path),
+            "output_filename": Path(output_path).name,
+            "record_count": len(df)
+        })
+        st.info("🗃️ Metadata logged to DynamoDB.")
