@@ -1,5 +1,0 @@
-outs:
-- md5: 27eec5653988a3bd34658240dc449dbd
-  size: 53
-  hash: md5
-  path: test_alleles.csv
