@@ -1,15 +1,15 @@
 stages:
-  annotate:
-    cmd: python annotate.py
+  annotate_PTEST:
+    cmd: python annotate.py --input data/uploads/input_PTEST.csv --output 
+      data/outputs/output_PTEST.csv --patient_id PTEST
     deps:
-    - annotate.py
-    - data/test_alleles.csv
+    - data/uploads/input_PTEST.csv
     outs:
-    - data/annotated.csv
-  annotate_v2:
-    cmd: python annotate.py data/test_alleles_v2.csv data/annotated_v2.csv
+    - data/outputs/output_PTEST.csv
+  annotate_PTEST2:
+    cmd: python annotate.py --input data/uploads/input_PTEST2.csv --output 
+      data/outputs/output_PTEST2.csv --patient_id PTEST2
     deps:
-    - annotate.py
-    - data/test_alleles_v2.csv
+    - data/uploads/input_PTEST2.csv
     outs:
-    - data/annotated_v2.csv
+    - data/outputs/output_PTEST2.csv

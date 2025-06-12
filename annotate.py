@@ -1,18 +1,15 @@
 import pandas as pd
 from pathlib import Path
-from datetime import datetime
+import argparse
 
-def annotate_variants(input_path: str, output_dir: str, patient_id: str) -> str:
+def annotate_variants(input_path: str, output_path: str, patient_id: str):
     """
-    Annotates variants and saves output with patient ID and timestamp.
+    Annotates variants and saves output.
 
     Parameters:
-    - input_path (str): Path to input CSV file with 'Gene' and 'Allele' columns.
-    - output_path (str): Path where the annotated CSV will be saved.
+    - input_path (str): Path to input CSV with 'Gene' and 'Allele' columns.
+    - output_path (str): Final output file path.
     - patient_id (str): Patient unique ID.
-    
-    Returns:
-        str: Path to the output file.
     """
     df = pd.read_csv(input_path)
 
@@ -27,33 +24,18 @@ def annotate_variants(input_path: str, output_dir: str, patient_id: str) -> str:
             return "Low"
 
     df["Risk"] = df["Allele"].apply(risk_logic)
-    df["PatientID"] = patient_id  # Optional: include ID in file
+    df["PatientID"] = patient_id
 
-    # Create timestamped output path
-    timestamp = datetime.now().strftime("%Y%m%dT%H%M")
-    output_filename = f"annotated_{patient_id}_{timestamp}.csv"
-    output_path = Path(output_dir) / output_filename
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_path, index=False)
-
-    return str(output_path)
+    print(f"[INFO] Annotation saved to: {output_path}")
 
 
 if __name__ == "__main__":
-    import sys
-    import subprocess
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", required=True, help="Path to input CSV")
+    parser.add_argument("--output", required=True, help="Path to output CSV")
+    parser.add_argument("--patient_id", required=True, help="Patient ID")
 
-    input_path = sys.argv[1] if len(sys.argv) > 1 else "data/test_alleles.csv"
-    patient_id = sys.argv[2] if len(sys.argv) > 2 else "P000"
-    output_dir = sys.argv[3] if len(sys.argv) > 3 else "data/outputs"
-
-    output_path = annotate_variants(input_path, output_dir, patient_id)
-
-    # DVC tracking
-    try:
-        subprocess.run(["dvc", "add", output_path], check=True)
-        subprocess.run(["git", "add", f"{output_path}.dvc"], check=True)
-        subprocess.run(["git", "commit", "-m", f"Track annotation for {patient_id}"], check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"[ERROR] DVC tracking failed: {e}")
+    args = parser.parse_args()
+    annotate_variants(args.input, args.output, args.patient_id)

@@ -31,7 +31,7 @@ if uploaded_file and patient_id:
     input_dir.mkdir(parents=True, exist_ok=True)
 
     # New input file name format
-    input_filename = f"input_{patient_id}_{timestamp}.csv"
+    input_filename = f"input_{patient_id}.csv"
     input_path = input_dir / input_filename
 
     # Save uploaded file
@@ -46,17 +46,18 @@ if uploaded_file and patient_id:
     s3_uri = f"s3://{S3_BUCKET}/{s3_key}"
     st.info(f"📤 Uploaded to S3: {s3_uri}")
 
-    # Run annotation
-    output_path = annotate_variants(str(input_path), "data/outputs", patient_id)
-
-    # DVC track
+    # Run annotation via DVC stage
     try:
-        subprocess.run(["dvc", "add", output_path], check=True)
-        subprocess.run(["git", "add", f"{output_path}.dvc"], check=True)
-        subprocess.run(["git", "commit", "-m", f"Track annotation for {patient_id}"], check=True)
-        st.success("📌 Output annotated and versioned with DVC.")
+        subprocess.run(["python", "run_annotation.py", patient_id], check=True)
+        output_path = Path(f"data/outputs/output_{patient_id}.csv")
+        if output_path.exists():
+            df_result = pd.read_csv(output_path)
+            st.success(f"✅ Annotation complete for {patient_id}")
+            st.dataframe(df_result)
+        else:
+            st.warning("⚠️ Output file not found.")
     except subprocess.CalledProcessError as e:
-        st.error(f"❌ DVC tracking failed: {e}")
+        st.error(f"❌ Annotation failed: {e}")
 
     # Display annotated data
     df = pd.read_csv(output_path)

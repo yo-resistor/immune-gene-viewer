@@ -32,3 +32,29 @@ stages:
       hash: md5
       md5: 9ca3709d0a0dc1fec3d2a2a3e0f9aebb
       size: 82
+  annotate_PTEST:
+    cmd: python annotate.py --input data/uploads/input_PTEST.csv --output 
+      data/outputs/output_PTEST.csv --patient_id PTEST
+    deps:
+    - path: data/uploads/input_PTEST.csv
+      hash: md5
+      md5: dedbc0e5e6ff8efabd5b53f655de79e7
+      size: 45
+    outs:
+    - path: data/outputs/output_PTEST.csv
+      hash: md5
+      md5: 0105955fae0f69465b8b2301e04f0b46
+      size: 102
+  annotate_PTEST2:
+    cmd: python annotate.py --input data/uploads/input_PTEST2.csv --output 
+      data/outputs/output_PTEST2.csv --patient_id PTEST2
+    deps:
+    - path: data/uploads/input_PTEST2.csv
+      hash: md5
+      md5: c6564d1b39b77da20c9c849c06643710
+      size: 45
+    outs:
+    - path: data/outputs/output_PTEST2.csv
+      hash: md5
+      md5: ad47eb93fbd6f93921a9b3895e01be80
+      size: 105

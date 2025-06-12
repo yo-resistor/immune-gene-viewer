@@ -61,16 +61,19 @@ dist/
 .aws/
 
 # Ignore all raw uploads
-/data/uploads/*
+data/uploads/*
+
+# Ignore logs
+data/logs.csv
 
 # Keep uploads folder structure, but not its content
 !/data/uploads/.gitkeep
 
 # DVC outputs should be tracked via DVC
-/data/outputs/*.csv
+data/outputs/*.csv
 
 # DVC-related
-/data/test_alleles.csv
+data/test_alleles.csv
 .dvc/tmp/
 .dvc/cache/
 
