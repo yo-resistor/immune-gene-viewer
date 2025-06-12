@@ -3,7 +3,7 @@
 export AWS_PAGER=""
 
 # Instance details
-INSTANCE_ID="i-00b8be37010e3631f"  # ← Replace with your actual instance ID
+INSTANCE_ID="i-037e0c7f9dbc9db27"  # ← Replace with your actual instance ID
 REGION="us-west-2"
 
 echo "🔍 Checking current EC2 state..."
