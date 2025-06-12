@@ -6,10 +6,24 @@ stages:
     - data/uploads/input_PTEST.csv
     outs:
     - data/outputs/output_PTEST.csv
-  annotate_PTEST2:
-    cmd: python annotate.py --input data/uploads/input_PTEST2.csv --output 
-      data/outputs/output_PTEST2.csv --patient_id PTEST2
+  annotate_P001:
+    cmd: python annotate.py --input data/uploads/input_P001.csv --output 
+      data/outputs/output_P001.csv --patient_id P001
     deps:
-    - data/uploads/input_PTEST2.csv
+    - data/uploads/input_P001.csv
     outs:
-    - data/outputs/output_PTEST2.csv
+    - data/outputs/output_P001.csv
+  annotate_P002:
+    cmd: python annotate.py --input data/uploads/input_P002.csv --output 
+      data/outputs/output_P002.csv --patient_id P002
+    deps:
+    - data/uploads/input_P002.csv
+    outs:
+    - data/outputs/output_P002.csv
+  annotate_P003:
+    cmd: python annotate.py --input data/uploads/input_P003.csv --output 
+      data/outputs/output_P003.csv --patient_id P003
+    deps:
+    - data/uploads/input_P003.csv
+    outs:
+    - data/outputs/output_P003.csv

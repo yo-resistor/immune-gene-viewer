@@ -1,60 +1,54 @@
 schema: '2.0'
 stages:
-  annotate:
-    cmd: python annotate.py
-    deps:
-    - path: annotate.py
-      hash: md5
-      md5: d5ca8d8ba280423ec183d1b2b34e7576
-      size: 731
-    - path: data/test_alleles.csv
-      hash: md5
-      md5: 27eec5653988a3bd34658240dc449dbd
-      size: 53
-    outs:
-    - path: data/annotated.csv
-      hash: md5
-      md5: 5ad5c1efe3217850b3b12a8a2cb7ca16
-      size: 77
-  annotate_v2:
-    cmd: python annotate.py data/test_alleles_v2.csv data/annotated_v2.csv
-    deps:
-    - path: annotate.py
-      hash: md5
-      md5: d5ca8d8ba280423ec183d1b2b34e7576
-      size: 731
-    - path: data/test_alleles_v2.csv
-      hash: md5
-      md5: 792dd259042f46327184be2034b8b13d
-      size: 53
-    outs:
-    - path: data/annotated_v2.csv
-      hash: md5
-      md5: 9ca3709d0a0dc1fec3d2a2a3e0f9aebb
-      size: 82
   annotate_PTEST:
     cmd: python annotate.py --input data/uploads/input_PTEST.csv --output 
       data/outputs/output_PTEST.csv --patient_id PTEST
     deps:
     - path: data/uploads/input_PTEST.csv
       hash: md5
-      md5: dedbc0e5e6ff8efabd5b53f655de79e7
-      size: 45
+      md5: 911d43acdcdb290b552926c904cc57ef
+      size: 44
     outs:
     - path: data/outputs/output_PTEST.csv
       hash: md5
-      md5: 0105955fae0f69465b8b2301e04f0b46
-      size: 102
-  annotate_PTEST2:
-    cmd: python annotate.py --input data/uploads/input_PTEST2.csv --output 
-      data/outputs/output_PTEST2.csv --patient_id PTEST2
+      md5: 1293a48d1a150565fef0c557f603bab8
+      size: 101
+  annotate_P001:
+    cmd: python annotate.py --input data/uploads/input_P001.csv --output 
+      data/outputs/output_P001.csv --patient_id P001
     deps:
-    - path: data/uploads/input_PTEST2.csv
+    - path: data/uploads/input_P001.csv
       hash: md5
-      md5: c6564d1b39b77da20c9c849c06643710
-      size: 45
+      md5: 27eec5653988a3bd34658240dc449dbd
+      size: 53
     outs:
-    - path: data/outputs/output_PTEST2.csv
+    - path: data/outputs/output_P001.csv
       hash: md5
-      md5: ad47eb93fbd6f93921a9b3895e01be80
-      size: 105
+      md5: c862a95b9ee1b723fc37b2d81b9a46db
+      size: 102
+  annotate_P002:
+    cmd: python annotate.py --input data/uploads/input_P002.csv --output 
+      data/outputs/output_P002.csv --patient_id P002
+    deps:
+    - path: data/uploads/input_P002.csv
+      hash: md5
+      md5: 27eec5653988a3bd34658240dc449dbd
+      size: 53
+    outs:
+    - path: data/outputs/output_P002.csv
+      hash: md5
+      md5: c2e5fe6f22ce729ee23a216c68676f3a
+      size: 102
+  annotate_P003:
+    cmd: python annotate.py --input data/uploads/input_P003.csv --output 
+      data/outputs/output_P003.csv --patient_id P003
+    deps:
+    - path: data/uploads/input_P003.csv
+      hash: md5
+      md5: 27eec5653988a3bd34658240dc449dbd
+      size: 53
+    outs:
+    - path: data/outputs/output_P003.csv
+      hash: md5
+      md5: 90b1cbb74702b91464829f2e2e0d523c
+      size: 102

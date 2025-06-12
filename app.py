@@ -53,7 +53,6 @@ if uploaded_file and patient_id:
         if output_path.exists():
             df_result = pd.read_csv(output_path)
             st.success(f"✅ Annotation complete for {patient_id}")
-            st.dataframe(df_result)
         else:
             st.warning("⚠️ Output file not found.")
     except subprocess.CalledProcessError as e:

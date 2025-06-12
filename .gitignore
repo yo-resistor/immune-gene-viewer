@@ -59,6 +59,7 @@ dist/
 
 # Ignore AWS credentials/config
 .aws/
+aws/
 
 # Ignore all raw uploads
 data/uploads/*
