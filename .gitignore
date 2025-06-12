@@ -68,6 +68,9 @@ dist/
 .dvc/tmp/
 .dvc/cache/
 
+# Sensitive data
+secure_data/
+
 # Local test outputs
 coverage/
 htmlcov/
