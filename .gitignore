@@ -11,9 +11,6 @@ venv/
 .env/
 .venv/
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
 # VS Code or other IDE settings
 .vscode/
 .idea/
@@ -60,8 +57,17 @@ dist/
 # Streamlit cache
 .streamlit/
 
-# AWS credentials (be extremely careful!)
+# Ignore AWS credentials/config
 .aws/
+
+# Ignore all raw uploads
+/data/uploads/*
+
+# Keep uploads folder structure, but not its content
+!/data/uploads/.gitkeep
+
+# DVC outputs should be tracked via DVC
+/data/outputs/*.csv
 
 # DVC-related
 /data/test_alleles.csv
