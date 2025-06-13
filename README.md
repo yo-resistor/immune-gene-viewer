@@ -6,7 +6,7 @@ A lightweight web application to **upload, annotate, and view immune-related gen
 ## 🧪 Try the Live Demo
 
 You can test the web app live here:  
-🌐🔗 [http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/](http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/)
+🌐 [http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/](http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/)
 
 ### ✅ Test Instructions
 
@@ -21,8 +21,7 @@ You can test the web app live here:
  HLA-A,A*02:01
  ```
 
- 📄 Or download the sample input file here:  
- [Download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv)
+ Or 📄 [download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv)
 
 4. View your annotated results directly on the page
 5. The run will be logged and versioned behind the scenes using DVC and DynamoDB
