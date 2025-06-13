@@ -4,6 +4,7 @@
 A lightweight web application to **upload, annotate, and view immune-related gene variants**. Designed as a toy project to demonstrate an end-to-end data annotation pipeline with reproducibility, AWS integration, and Streamlit deployment.
 
 🌐 Live Demo: [http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501](http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501)
+📄 [Download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv)
 
 ## 🧠 Purpose
 
