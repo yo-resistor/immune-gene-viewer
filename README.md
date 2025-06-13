@@ -3,9 +3,32 @@
 
 A lightweight web application to **upload, annotate, and view immune-related gene variants**. Designed as a toy project to demonstrate an end-to-end data annotation pipeline with reproducibility, AWS integration, and Streamlit deployment.
 
-🌐 Live Demo: [http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501](http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501)
+## 🧪 Try the Live Demo
 
-📄 [Download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv)
+You can test the web app live here:  
+🌐🔗 [http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/](http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/)
+
+### ✅ Test Instructions
+
+1. Go to the app link above
+2. In the **Patient ID** field, enter: `PTEST` 
+3. Upload a CSV file with the following content:
+
+ ```csv
+ Gene,Allele
+ HLA-B,B*08:01
+ HLA-B,B*15:01
+ HLA-A,A*02:01
+ ```
+
+ 📄 Or download the sample input file here:  
+ [Download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv)
+
+4. View your annotated results directly on the page
+5. The run will be logged and versioned behind the scenes using DVC and DynamoDB
+6. The input and output data will be stored in S3 using SSE (Server Side Encryption)
+
+💡 *You can repeat this test with different Patient IDs or alleles to see how risk logic changes.*
 
 ## 🧠 Purpose
 
