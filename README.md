@@ -8,7 +8,7 @@ A lightweight web application to **upload, annotate, and view immune-related gen
 You can test the web app live here:  
 🌐 [http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/](http://ec2-52-42-31-181.us-west-2.compute.amazonaws.com:8501/)
 
-### ✅ Test Instructions
+### 📜 Test Instructions
 
 1. Go to the app link above
 2. In the **Patient ID** field, enter: `PTEST` 
@@ -27,7 +27,7 @@ You can test the web app live here:
 5. The run will be logged and versioned behind the scenes using DVC and DynamoDB
 6. The input and output data will be stored in S3 using SSE (Server Side Encryption)
 
-💡 *You can repeat this test with different Patient IDs or alleles to see how risk logic changes.*
+💡 *You can try entering different Patient IDs (e.g., P001, P002) or change allele inputs to see how the risk classification adapts.*
 
 ## 🧠 Purpose
 
