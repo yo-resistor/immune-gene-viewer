@@ -52,3 +52,16 @@ stages:
       hash: md5
       md5: 90b1cbb74702b91464829f2e2e0d523c
       size: 102
+  annotate_P007:
+    cmd: python annotate.py --input data/uploads/input_P007.csv --output 
+      data/outputs/output_P007.csv --patient_id P007
+    deps:
+    - path: data/uploads/input_P007.csv
+      hash: md5
+      md5: 27eec5653988a3bd34658240dc449dbd
+      size: 53
+    outs:
+    - path: data/outputs/output_P007.csv
+      hash: md5
+      md5: 00483673f03cf637368ded42b50991fc
+      size: 102

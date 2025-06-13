@@ -27,3 +27,10 @@ stages:
     - data/uploads/input_P003.csv
     outs:
     - data/outputs/output_P003.csv
+  annotate_P007:
+    cmd: python annotate.py --input data/uploads/input_P007.csv --output 
+      data/outputs/output_P007.csv --patient_id P007
+    deps:
+    - data/uploads/input_P007.csv
+    outs:
+    - data/outputs/output_P007.csv
