@@ -21,7 +21,7 @@ You can test the web app live here:
  HLA-A,A*02:01
  ```
 
- Or 📄 [download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv)
+ Or 📄 [download Sample Input CSV](https://github.com/yo-resistor/immune-gene-viewer/blob/main/sample_input.csv) here.
 
 4. View your annotated results directly on the page
 5. The run will be logged and versioned behind the scenes using DVC and DynamoDB
