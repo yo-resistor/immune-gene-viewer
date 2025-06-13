@@ -9,6 +9,7 @@ amqp==5.3.1
 annotated-types==0.7.0
 antlr4-python3-runtime==4.9.3
 appdirs==1.4.4
+async-timeout==5.0.1
 asyncssh==2.21.0
 atpublic==6.0.1
 attrs==25.3.0
@@ -65,7 +66,7 @@ MarkupSafe==3.0.2
 mdurl==0.1.2
 multidict==6.4.4
 narwhals==1.42.0
-networkx<3.5
+networkx==3.4.2
 numpy==2.2.6
 omegaconf==2.3.0
 orjson==3.10.18
@@ -101,7 +102,6 @@ s3fs==2025.5.1
 s3transfer==0.11.3
 scmrepo==3.3.11
 semver==3.0.4
-setuptools==80.9.0
 shellingham==1.5.4
 shortuuid==1.0.13
 shtab==1.7.2
