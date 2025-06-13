@@ -6,17 +6,25 @@ A lightweight web application to **upload, annotate, and view immune-related gen
 
 ---
 
+## 🧠 Purpose
+The project was built as a toy prototype to demonstrate:
+- Streamlit frontend + cloud backend integration
+- DVC-powered reproducibility
+- Lightweight bioinformatics tools for clinical/biotech applications
+
+---
+
 ## 🚀 Features
 
-- 🔬 Upload CSV files containing immune gene variants (format: `Gene`, `Allele`)
-- ⚙️ Run annotation logic and generate risk assessments
-- 📝 View and download annotated results
-- 🔁 Logs and tracks annotated runs using a local `logs.csv`
-- ☁️ AWS-Ready:
+- Upload CSV files containing immune gene variants (format: `Gene`, `Allele`)
+- Run annotation logic and generate risk assessments
+- View and download annotated results
+- Logs and tracks annotated runs using a local `logs.csv`
+- AWS-Ready:
   - Hosted on EC2
   - Input/output logging with **DynamoDB**
   - S3-based **data versioning** with DVC
-- 🔐 Simulates secure handling of sensitive data using encryption and IAM scoping
+- Simulates secure handling of sensitive data using encryption and IAM scoping
 
 ---
 
@@ -58,3 +66,48 @@ or
 ```bash
 bash scripts/deploy.sh
 ```
+
+---
+
+## 🧪 Annotation Logic
+The core logic uses a simple risk scoring system based on allele types:
+```python
+def risk_logic(allele):
+    if "B*08" in allele:
+        return "Very High"
+    elif "B" in allele:
+        return "High"
+    elif "A" in allele:
+        return "Moderate"
+    else:
+        return "Low"
+```
+
+---
+
+## 📁 File Structure
+```
+data/
+├── uploads/       # uploaded input CSVs
+├── outputs/       # annotated results
+├── logs.csv       # log of all runs
+app.py             # Streamlit UI
+annotate.py        # annotation logic
+dvc_utils.py       # DVC integration
+run_annotation.py  # standalone CLI annotation with DVC tracking
+```
+
+---
+
+## 📘 Future Work
+- Add variant-disease mapping using public APIs
+- Improve the annotation logic
+- Full HTTPS setup with domain
+- User authentication and role-based access
+- CI/CD with GitHub Actions
+- Containerization using ECS or EKS
+
+---
+
+## 📜 License
+MIT License
