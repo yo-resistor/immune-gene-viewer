@@ -108,7 +108,7 @@ def risk_logic(allele):
 data/
 ├── uploads/       # uploaded input CSVs
 ├── outputs/       # annotated results
-├── logs.csv       # log of all runs
+└── logs.csv       # log of all runs
 app.py             # Streamlit UI
 annotate.py        # annotation logic
 dvc_utils.py       # DVC integration
@@ -125,6 +125,7 @@ run_annotation.py  # standalone CLI annotation with DVC tracking
 - Containerization using ECS or EKS
 
 ## 📜 License
+
 MIT License
 
 Copyright (c) 2025 Yunsik Ohm
