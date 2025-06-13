@@ -35,25 +35,25 @@ The project was built as a toy prototype to demonstrate:
 
 ## 🏛️ Architecture Overview
 ```
-                    +-----------------------+
-                    |   User (Web Client)   |
-                    +-----------+-----------+
-                                |
-                                v
-                  +-------------+-------------+
-                  |   EC2 Instance (Ubuntu)   |
-                  |   - Hosts Streamlit app   |
-                  |   - Uses tmux to persist  |
-                  +-------------+-------------+
-                                |
-         +----------------------+------------+
-         |                                   |
-         v                                   v
-+-------------------+           +-----------------------------+
-|  AWS S3           |           | AWS DynamoDB                |
-| - Upload storage  |           | - Logs Patient ID, input    |
-| - DVC versioning  |           |   time, etc.                |
-+-------------------+           +-----------------------------+
+                +-----------------------+
+                |   User (Web Client)   |
+                +-----------+-----------+
+                            |
+                            v
+              +-------------+-------------+
+              |   EC2 Instance (Ubuntu)   |
+              |   - Hosts Streamlit app   |
+              |   - Uses tmux to persist  |
+              +-------------+-------------+
+                            |
+            +---------------+---------------+
+            |                               |
+            v                               v
++-----------+-----------+       +-----------+------------+
+|   AWS S3              |       |   AWS DynamoDB         |
+|   - Upload storage    |       |   - Logs Patient ID,   |
+|   - DVC versioning    |       |     input time, etc.   |
++-----------------------+       +------------------------+
 ```
 
 ## 🧑‍💻 Getting Started
