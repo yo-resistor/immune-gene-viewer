@@ -33,6 +33,29 @@ The project was built as a toy prototype to demonstrate:
 - **Deployment**: EC2 (Ubuntu), `tmux` for persistent sessions  
 - **Pipeline Logging**: `dvc.yaml` + custom DVC stages
 
+## 🏛️ Architecture Overview
+```
+                    +-----------------------+
+                    |   User (Web Client)   |
+                    +-----------+-----------+
+                                |
+                                v
+                  +-------------+-------------+
+                  |   EC2 Instance (Ubuntu)   |
+                  |   - Hosts Streamlit app   |
+                  |   - Uses tmux to persist  |
+                  +-------------+-------------+
+                                |
+         +----------------------+------------+
+         |                                   |
+         v                                   v
++-------------------+           +-----------------------------+
+|  AWS S3           |           | AWS DynamoDB                |
+| - Upload storage  |           | - Logs Patient ID, input    |
+| - DVC versioning  |           |   time, etc.                |
++-------------------+           +-----------------------------+
+```
+
 ## 🧑‍💻 Getting Started
 
 ### 1. Clone the repo
@@ -64,8 +87,6 @@ or
 bash scripts/deploy.sh
 ```
 
----
-
 ## 🧪 Annotation Logic
 
 The core logic uses a simple risk scoring system based on allele types:
@@ -81,8 +102,6 @@ def risk_logic(allele):
         return "Low"
 ```
 
----
-
 ## 📁 File Structure
 
 ```
@@ -96,8 +115,6 @@ dvc_utils.py       # DVC integration
 run_annotation.py  # standalone CLI annotation with DVC tracking
 ```
 
----
-
 ## 📘 Future Work
 
 - Add variant-disease mapping using public APIs
@@ -106,8 +123,6 @@ run_annotation.py  # standalone CLI annotation with DVC tracking
 - User authentication and role-based access
 - CI/CD with GitHub Actions
 - Containerization using ECS or EKS
-
----
 
 ## 📜 License
 MIT License
